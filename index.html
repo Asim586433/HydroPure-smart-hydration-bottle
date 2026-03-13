@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>HydroPure · smart hydration bottle</title>
+  <!-- Tailwind (via CDN) + custom base -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome 6 (free) for crisp icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* micro-optimisations + smooth scroll */
+    html { scroll-behavior: smooth; }
+    .sticky-atc { transition: opacity 0.2s; }
+    .rating-star { color: #fbbf24; } /* tailwind amber-400 */
+    /* image placeholder style (uniform grey) */
+    .placeholder-img { background: linear-gradient(145deg, #e2e8f0 0%, #cbd5e1 100%); display: flex; align-items: center; justify-content: center; color: #334155; font-size: 0.9rem; }
+    /* guarantee badge shimmer (subtle) */
+    .guarantee-badge { background: #fef9c3; border-radius: 100px; }
+    /* faster CLS */
+    img, .aspect-square { aspect-ratio: 1 / 1; object-fit: cover; }
+  </style>
+</head>
+<body class="bg-white font-sans antialiased text-gray-800">
+
+<!-- STICKY ADD TO CART (appears on scroll) -->
+<div id="stickyCart" class="sticky-atc fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-md bg-white/95 backdrop-blur-sm shadow-2xl rounded-full border border-gray-200 px-4 py-3 flex items-center justify-between opacity-0 invisible transition-all duration-300 md:hidden">
+  <div class="flex items-center gap-3">
+    <div class="w-10 h-10 rounded-md placeholder-img overflow-hidden"><i class="fas fa-tint text-gray-500"></i></div>
+    <div>
+      <p class="font-bold text-sm">HydroPure Smart</p>
+      <div class="flex items-center gap-2"><span class="text-lg font-black text-gray-900">$34.99</span> <span class="text-xs line-through text-gray-400">$49.99</span></div>
+    </div>
+  </div>
+  <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-6 py-2.5 rounded-full shadow-lg transition flex items-center gap-1">Buy now <i class="fas fa-arrow-right text-xs"></i></a>
+</div>
+
+<script>
+  window.addEventListener('scroll', function() {
+    const sticky = document.getElementById('stickyCart');
+    if (window.scrollY > 500) {
+      sticky.classList.remove('opacity-0', 'invisible');
+    } else {
+      sticky.classList.add('opacity-0', 'invisible');
+    }
+  });
+</script>
+
+<!-- MAIN PAGE CONTAINER (max-w-6xl mx-auto for large screens) -->
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+  <!-- HERO SECTION (conversion-focused) -->
+  <section class="py-8 md:py-12 grid md:grid-cols-2 gap-8 items-center">
+    <!-- left text -->
+    <div class="text-center md:text-left">
+      <div class="inline-block bg-blue-50 text-blue-700 text-sm font-semibold px-4 py-1 rounded-full mb-4">⚡ limited time · 30% OFF</div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 leading-tight">HydroPure <span class="text-blue-600">Smart</span> Bottle</h1>
+      <p class="text-xl md:text-2xl text-gray-600 mt-4 max-w-xl">Never forget to hydrate. 24h cold, smart reminders & premium design.</p>
+      
+      <!-- price + discount badge -->
+      <div class="flex items-center justify-center md:justify-start gap-4 mt-6">
+        <span class="text-5xl font-black text-gray-900">$34.99</span>
+        <div class="flex flex-col items-start">
+          <span class="text-xl line-through text-gray-400">$49.99</span>
+          <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-bold">save 30%</span>
+        </div>
+      </div>
+      
+      <!-- primary CTA -->
+      <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold px-10 py-4 rounded-full shadow-xl transition transform hover:scale-105 flex items-center justify-center gap-2">Get 30% Off Today <i class="fas fa-bolt"></i></a>
+        <a href="#features" class="border-2 border-gray-300 hover:border-gray-400 text-gray-700 text-lg font-semibold px-8 py-4 rounded-full transition flex items-center justify-center">Learn more</a>
+      </div>
+      
+      <!-- micro social proof -->
+      <div class="flex items-center justify-center md:justify-start mt-6 gap-2">
+        <div class="flex -space-x-2">
+          <div class="w-8 h-8 rounded-full placeholder-img border-2 border-white"><i class="fas fa-user text-xs"></i></div>
+          <div class="w-8 h-8 rounded-full placeholder-img border-2 border-white"><i class="fas fa-user text-xs"></i></div>
+          <div class="w-8 h-8 rounded-full placeholder-img border-2 border-white"><i class="fas fa-user text-xs"></i></div>
+        </div>
+        <span class="text-gray-600 text-sm"><span class="font-bold text-gray-900">12k+</span> happy customers</span>
+      </div>
+    </div>
+    
+    <!-- right product image (placeholder + badge) -->
+    <div class="relative flex justify-center">
+      <div class="w-72 h-72 md:w-96 md:h-96 placeholder-img rounded-3xl shadow-2xl overflow-hidden border-8 border-white/50">
+        <i class="fas fa-tint text-7xl text-blue-400/70"></i>
+        <span class="sr-only">HydroPure bottle</span>
+      </div>
+      <div class="absolute -top-2 -right-2 bg-white rounded-full shadow-lg p-3 flex items-center gap-1 text-sm font-bold"><i class="fas fa-star text-yellow-400"></i>4.9</div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF (5-star + testimonials) -->
+  <section class="py-16 border-y border-gray-200">
+    <div class="text-center mb-10">
+      <div class="flex justify-center gap-1 text-2xl rating-star">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p class="text-gray-600 text-xl">Rated 4.9 out of 5 based on 2,300+ reviews</p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- testimonial 1 -->
+      <div class="bg-gray-50 p-6 rounded-2xl">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full placeholder-img overflow-hidden"><i class="fas fa-user-tie"></i></div>
+          <div><p class="font-bold">Alex Rivera</p><div class="rating-star flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
+        </div>
+        <p class="text-gray-700">“The reminder actually changed my water intake. I drink twice as much now. And it stays ice cold all day at the gym.”</p>
+      </div>
+      <!-- testimonial 2 -->
+      <div class="bg-gray-50 p-6 rounded-2xl">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full placeholder-img overflow-hidden"><i class="fas fa-user-nurse"></i></div>
+          <div><p class="font-bold">Dr. Chen Wei</p><div class="rating-star flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
+        </div>
+        <p class="text-gray-700">“I recommend it to my patients. BPA‑free, durable, and the smart lid is truly leak‑proof. Worth every penny.”</p>
+      </div>
+      <!-- testimonial 3 -->
+      <div class="bg-gray-50 p-6 rounded-2xl">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-full placeholder-img overflow-hidden"><i class="fas fa-user-astronaut"></i></div>
+          <div><p class="font-bold">Jamie Lin</p><div class="rating-star flex gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div>
+        </div>
+        <p class="text-gray-700">“Travels with me everywhere — from hiking to office. Looks sleek and the 24h cold is no joke. Love the mint color!”</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM → SOLUTION section -->
+  <section class="py-16 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <span class="text-blue-600 font-bold text-sm tracking-widest">PROBLEM</span>
+      <h2 class="text-3xl md:text-4xl font-black mt-2">Dehydrated, unfocused & tired?</h2>
+      <p class="text-gray-600 text-lg mt-4">Most people forget to drink water during busy days, leading to headaches, low energy, and poor focus. Regular bottles don’t help.</p>
+      <div class="mt-8 bg-amber-50 p-6 rounded-2xl border-l-8 border-amber-400">
+        <span class="text-2xl font-bold text-amber-800">solution →</span>
+        <h3 class="text-2xl font-black mt-1">HydroPure Smart</h3>
+        <p class="mt-2">Gentle reminders + insulation that keeps water refreshingly cold, so you actually enjoy drinking.</p>
+      </div>
+    </div>
+    <div class="placeholder-img w-full h-80 rounded-3xl shadow-xl overflow-hidden flex flex-col justify-center items-center text-gray-500"><i class="fas fa-face-frown text-8xl opacity-40"></i><span class="mt-2"> vs </span><i class="fas fa-face-smile text-8xl text-blue-500/60 mt-2"></i></div>
+  </section>
+
+  <!-- FEATURES (icons + short) -->
+  <section id="features" class="py-16">
+    <h2 class="text-3xl md:text-4xl font-black text-center mb-12">Engineered for <span class="text-blue-600">daily hydration</span></h2>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+      <div class="text-center"><div class="bg-blue-100 w-16 h-16 mx-auto rounded-2xl flex items-center justify-center text-3xl text-blue-600"><i class="fas fa-snowflake"></i></div><p class="font-bold mt-3">24h cold</p><p class="text-sm text-gray-500">even in a hot car</p></div>
+      <div class="text-center"><div class="bg-blue-100 w-16 h-16 mx-auto rounded-2xl flex items-center justify-center text-3xl text-blue-600"><i class="fas fa-bell"></i></div><p class="font-bold mt-3">Smart reminder</p><p class="text-sm text-gray-500">gentle blink</p></div>
+      <div class="text-center"><div class="bg-blue-100 w-16 h-16 mx-auto rounded-2xl flex items-center justify-center text-3xl text-blue-600"><i class="fas fa-lock"></i></div><p class="font-bold mt-3">Leak‑proof lid</p><p class="text-sm text-gray-500">100% seal</p></div>
+      <div class="text-center"><div class="bg-blue-100 w-16 h-16 mx-auto rounded-2xl flex items-center justify-center text-3xl text-blue-600"><i class="fas fa-leaf"></i></div><p class="font-bold mt-3">BPA-free steel</p><p class="text-sm text-gray-500">18/8 stainless</p></div>
+      <div class="text-center"><div class="bg-blue-100 w-16 h-16 mx-auto rounded-2xl flex items-center justify-center text-3xl text-blue-600"><i class="fas fa-feather"></i></div><p class="font-bold mt-3">Lightweight</p><p class="text-sm text-gray-500">travel friendly</p></div>
+    </div>
+  </section>
+
+  <!-- LIFESTYLE SECTION (gym/office/travel) -->
+  <section class="py-16">
+    <h2 class="text-3xl md:text-4xl font-black text-center mb-12">Fits your <span class="text-blue-600">every move</span></h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="rounded-3xl overflow-hidden shadow-lg"><div class="h-56 placeholder-img w-full flex flex-col justify-center items-center"><i class="fas fa-dumbbell text-5xl text-gray-600"></i><p class="mt-2 font-medium">gym</p></div></div>
+      <div class="rounded-3xl overflow-hidden shadow-lg"><div class="h-56 placeholder-img w-full flex flex-col justify-center items-center"><i class="fas fa-laptop text-5xl text-gray-600"></i><p class="mt-2 font-medium">office</p></div></div>
+      <div class="rounded-3xl overflow-hidden shadow-lg"><div class="h-56 placeholder-img w-full flex flex-col justify-center items-center"><i class="fas fa-plane text-5xl text-gray-600"></i><p class="mt-2 font-medium">travel</p></div></div>
+    </div>
+  </section>
+
+  <!-- COMPARISON CHART (vs regular bottles) -->
+  <section class="py-16 bg-gray-50 rounded-3xl p-8">
+    <h2 class="text-3xl md:text-4xl font-black text-center mb-10">Why switch to HydroPure?</h2>
+    <div class="max-w-3xl mx-auto">
+      <div class="flex border-b py-4"><div class="w-1/2 font-bold">Feature</div><div class="w-1/4 font-bold text-blue-600">HydroPure</div><div class="w-1/4 font-bold text-gray-500">Regular bottle</div></div>
+      <div class="flex border-b py-4"><div class="w-1/2">Temperature (24h cold)</div><div class="w-1/4 text-green-600"><i class="fas fa-check"></i> 24h</div><div class="w-1/4 text-red-400"><i class="fas fa-times"></i> 1-2h</div></div>
+      <div class="flex border-b py-4"><div class="w-1/2">Hydration reminder</div><div class="w-1/4 text-green-600"><i class="fas fa-check"></i> yes</div><div class="w-1/4 text-red-400"><i class="fas fa-times"></i> no</div></div>
+      <div class="flex border-b py-4"><div class="w-1/2">Leak-proof guarantee</div><div class="w-1/4 text-green-600"><i class="fas fa-check"></i> 100%</div><div class="w-1/4 text-red-400">often leaks</div></div>
+      <div class="flex border-b py-4"><div class="w-1/2">Material safety</div><div class="w-1/4 text-green-600">BPA-free steel</div><div class="w-1/4 text-gray-500">plastic/aluminum</div></div>
+      <div class="flex py-4"><div class="w-1/2">Weight (empty)</div><div class="w-1/4 text-green-600">12 oz</div><div class="w-1/4">~15 oz</div></div>
+    </div>
+  </section>
+
+  <!-- BENEFITS SECTION (durability/health/portability) -->
+  <section class="py-16">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white border rounded-2xl p-8 shadow-sm"><i class="fas fa-shield-alt text-4xl text-blue-600 mb-4"></i><h3 class="text-xl font-bold">Built like a tank</h3><p class="text-gray-600 mt-2">Durable 18/8 stainless steel — survives drops, stays beautiful.</p></div>
+      <div class="bg-white border rounded-2xl p-8 shadow-sm"><i class="fas fa-heartbeat text-4xl text-blue-600 mb-4"></i><h3 class="text-xl font-bold">Health first</h3><p class="text-gray-600 mt-2">No BPA, no toxins. Electro-polished interior keeps taste clean.</p></div>
+      <div class="bg-white border rounded-2xl p-8 shadow-sm"><i class="fas fa-briefcase text-4xl text-blue-600 mb-4"></i><h3 class="text-xl font-bold">Travel ready</h3><p class="text-gray-600 mt-2">Fits cup holders, backpack pockets. Only 2.8” wide.</p></div>
+    </div>
+  </section>
+
+  <!-- FAQ (ecommerce style, 7 questions) -->
+  <section class="py-16">
+    <h2 class="text-3xl md:text-4xl font-black text-center mb-12">Questions? answered.</h2>
+    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div class="border-b pb-4"><p class="font-bold">❓ Is it really 24h cold?</p><p class="text-gray-600">Yes, double-wall vacuum insulation keeps ice 24h or more.</p></div>
+      <div class="border-b pb-4"><p class="font-bold">❓ How does the reminder work?</p><p class="text-gray-600">Smart lid blinks every hour — gentle nudge without batteries? (capacitor).</p></div>
+      <div class="border-b pb-4"><p class="font-bold">❓ Is it dishwasher safe?</p><p class="text-gray-600">Hand wash recommended to preserve finish, but lid is top-rack safe.</p></div>
+      <div class="border-b pb-4"><p class="font-bold">❓ What sizes available?</p><p class="text-gray-600">18oz (standard) and 25oz (large) — both included at this price.</p></div>
+      <div class="border-b pb-4"><p class="font-bold">❓ Does it fit in my car?</p><p class="text-gray-600">Yes, standard cup holders love HydroPure.</p></div>
+      <div class="border-b pb-4"><p class="font-bold">❓ Returns?</p><p class="text-gray-600">30-day money back, no questions asked.</p></div>
+      <div class="border-b pb-4"><p class="font-bold">❓ How to clean?</p><p class="text-gray-600">Wide mouth – easy to scrub. Cleaning brush included.</p></div>
+    </div>
+  </section>
+
+  <!-- GUARANTEE BANNER + 30-day -->
+  <section class="my-8 guarantee-badge p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-4"><i class="fas fa-medal text-5xl text-amber-700"></i><div><span class="text-2xl font-black">30‑day money‑back guarantee</span><p class="text-gray-700">Love it or send it back for a full refund.</p></div></div>
+    <a href="#" class="bg-gray-900 hover:bg-black text-white px-8 py-4 rounded-full font-bold whitespace-nowrap">try risk-free</a>
+  </section>
+
+  <!-- FINAL CTA (strong closing + urgency) -->
+  <section class="py-16 text-center">
+    <span class="bg-rose-100 text-rose-600 font-bold px-5 py-2 rounded-full inline-block mb-4">⏳ SALE ENDS TONIGHT</span>
+    <h2 class="text-4xl md:text-5xl font-black mb-4">Ready to hydrate smarter?</h2>
+    <p class="text-xl text-gray-600 mb-8">Join 12,000+ customers who transformed their daily water intake.</p>
+    <div class="flex items-center justify-center gap-4 text-2xl font-bold"><span class="line-through text-gray-400">$49.99</span><span class="text-5xl text-gray-900">$34.99</span></div>
+    <a href="#" class="inline-block mt-8 bg-blue-600 hover:bg-blue-700 text-white text-xl font-bold px-16 py-5 rounded-full shadow-2xl transition transform hover:scale-105"><i class="fas fa-lock mr-2 text-sm"></i> Get 30% Off + free shipping</a>
+    <p class="text-sm text-gray-400 mt-4">Secure checkout · 1‑click order</p>
+  </section>
+
+  <!-- FOOTER (links, policies) -->
+  <footer class="border-t py-10 text-sm text-gray-500 flex flex-col md:flex-row justify-between gap-6">
+    <div class="flex gap-6 flex-wrap justify-center">
+      <a href="#" class="hover:text-gray-800">Contact</a><a href="#" class="hover:text-gray-800">Shipping</a><a href="#" class="hover:text-gray-800">Returns</a><a href="#" class="hover:text-gray-800">Privacy</a><a href="#" class="hover:text-gray-800">Terms</a>
+    </div>
+    <div class="flex gap-4 justify-center">
+      <i class="fab fa-instagram text-xl hover:text-gray-800"></i><i class="fab fa-tiktok text-xl hover:text-gray-800"></i><i class="fab fa-x-twitter text-xl hover:text-gray-800"></i>
+    </div>
+    <p class="text-center md:text-right">© 2025 HydroPure · All rights reserved.</p>
+  </footer>
+</div>
+
+<!-- sticky cart for desktop+tablet (larger version) hidden on mobile, visible on md -->
+<div id="stickyCartDesktop" class="sticky-atc fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-auto max-w-3xl bg-white/90 backdrop-blur-md shadow-2xl rounded-full border border-gray-200 px-6 py-3 hidden md:flex items-center gap-8 opacity-0 invisible transition-all duration-300">
+  <div class="flex items-center gap-4">
+    <i class="fas fa-tint text-blue-500 text-xl"></i>
+    <span class="font-bold">HydroPure Smart Bottle</span>
+    <div class="flex items-center gap-1"><span class="font-black text-gray-900">$34.99</span> <span class="line-through text-gray-400 text-sm">$49.99</span></div>
+  </div>
+  <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-2.5 rounded-full transition whitespace-nowrap">Buy now · 30% off</a>
+</div>
+
+<script>
+  // desktop sticky scroll
+  window.addEventListener('scroll', function() {
+    const desktopSticky = document.getElementById('stickyCartDesktop');
+    if (window.scrollY > 700) {
+      desktopSticky.classList.remove('opacity-0', 'invisible');
+    } else {
+      desktopSticky.classList.add('opacity-0', 'invisible');
+    }
+  });
+  // ensure any placeholder images have proper alt (already)
+</script>
+
+<!-- small extra: mobile menu not needed, but smooth for anchor -->
+</body>
+</html>
